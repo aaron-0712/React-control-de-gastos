@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { supabase } from "../index";
 
-export const useAuthStore = create((set) => ({
+export const useAuthStore = create((_set) => ({
     isAuthenticated: false,
     SignInWithGoogle: async () => {
         try {
-            const { data, error } = await supabase.auth.signInWithOAuth({
+            await supabase.auth.signInWithOAuth({
                 provider: "google",
             });
-        } catch (error) {}
+        } catch {}
     },
 }));
